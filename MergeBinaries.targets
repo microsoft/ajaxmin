@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- target will be executed if the input is newer than the output -->
+    <Target Name="MergeAssemblies" AfterTargets="Build"
+            Inputs="@(IntermediateAssembly)"
+            Outputs="@(MainAssembly->'%(FullPath).ilmergetrigger')">
+        <!-- get the list of all references that are marked as "copy local" -->
+        <CreateItem Include="@(ReferencePath)" Condition="'%(CopyLocal)'=='true'">
+            <Output TaskParameter="Include" ItemName="ILMergeAssemblies"/>
+        </CreateItem>
+
+        <!-- do the merging -->
+        <Message Text="Merging assemblies" Importance="high" />
+        <Exec Command="&quot;$(SolutionDir)ILmerge.exe&quot; /keyfile:&quot;$(SolutionDir)ajaxmin.snk&quot; /out:&quot;@(MainAssembly)&quot; &quot;@(IntermediateAssembly)&quot; @(ILMergeAssemblies->'&quot;%(FullPath)&quot;', ' ') /targetplatform:v2,%WINDIR%\Microsoft.NET\Framework\v2.0.50727 /log /allowDup"
+              LogStandardErrorAsError="true" Condition="'$(TargetFrameworkVersion)'=='v2.0'" />
+        <Exec Command="&quot;$(SolutionDir)ILmerge.exe&quot; /keyfile:&quot;$(SolutionDir)ajaxmin.snk&quot; /out:&quot;@(MainAssembly)&quot; &quot;@(IntermediateAssembly)&quot; @(ILMergeAssemblies->'&quot;%(FullPath)&quot;', ' ') /targetplatform:v4,&quot;%ProgramFiles%\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0&quot; /log"
+              LogStandardErrorAsError="true" Condition="'$(TargetFrameworkVersion)'!='v2.0'" />
+
+        <!-- copy the merged files back over the intermediate file -->
+        <Copy SourceFiles="@(MainAssembly)" DestinationFolder="$(IntermediateOutputPath)" />
+        <Copy SourceFiles="@(_DebugSymbolsOutputPath)" DestinationFolder="$(IntermediateOutputPath)" />
+
+        <!-- write the output file AFTER we copy over the intermediate file so the time is later and
+             we won't trigger another execute unless the intermediate file is generated anew -->
+        <WriteLinesToFile File="@(MainAssembly->'%(FullPath).ilmergetrigger')" Lines="done" Overwrite="true" />
+    </Target>
+
+    <Target Name="CleanILMergeTrigger" AfterTargets="Clean">
+        <Message Text="Cleaning ILMerge trigger" Importance="high" />
+        <CreateItem Include="$(TargetDir)*.ilmergetrigger">
+            <Output TaskParameter="Include" ItemName="ILMergeTrigger"/>
+        </CreateItem>
+        <Delete Files="@(ILMergeTrigger)" />
+    </Target>
+
+    <!-- we no longer want to copy the local assemblies, so blank out that target -->
+    <Target Name="_CopyFilesMarkedCopyLocal"/>
+</Project>

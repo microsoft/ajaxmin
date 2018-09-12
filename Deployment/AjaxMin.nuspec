@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>AjaxMin</id>
+        <version>$version$</version>
+        <title>Microsoft Ajax Minifier</title>
+        <authors>Microsoft Corporation,Ron Logan</authors>
+        <owners>Microsoft Corporation</owners>
+        <licenseUrl>http://ajaxmin.codeplex.com/license</licenseUrl>
+        <projectUrl>http://ajaxmin.codeplex.com/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>JavaScript and CSS minification Library for use in .NET applications that want to provide minification or parsing functionality.</description>
+        <copyright>Copyright 2013 by Microsoft Corp. All rights reserved.</copyright>
+        <tags>JavaScript CSS minification crunch parser ast ajaxmin</tags>
+    </metadata>
+    <files>
+        <!-- reference the old name, .NET 2.0 dll -->
+        <file src="AjaxMinDll2005\bin\$Configuration$\AjaxMin.dll" target="lib/net20"/>
+        <file src="AjaxMinDll2005\bin\$Configuration$\AjaxMin.pdb" target="lib/net20"/>
+        <file src="AjaxMinDll2008\bin\$Configuration$\AjaxMin.dll" target="lib/net35"/>
+        <file src="AjaxMinDll2008\bin\$Configuration$\AjaxMin.pdb" target="lib/net35"/>
+        <file src="AjaxMinDll\bin\$Configuration$\AjaxMin.dll" target="lib/net40"/>
+        <file src="AjaxMinDll\bin\$Configuration$\AjaxMin.pdb" target="lib/net40"/>
+
+        <!-- task stuff in the tools folder -->
+        <!--<file src="AjaxMinTask\install.ps1" target="tools"/>
+        <file src="AjaxMinTask\uninstall.ps1" target="tools"/>-->
+
+        <!-- build files -->
+        <!-- nuget seems to have a bug for VisualStudio empty website projects, so I can't use their
+             auto-add feature for AjaxMin.targets. If it gets fixed, move back to the build folder. -->
+        <file src="AjaxMinTask\AjaxMin.targets" target="tools/net40"/>
+        <file src="AjaxMinTask\bin\$Configuration$\AjaxMinTask.dll" target="tools/net40"/>
+        <file src="AjaxMinTask\bin\$Configuration$\AjaxMin.dll" target="tools/net40"/>
+
+        <file src="AjaxMinTask\AjaxMin.targets" target="tools/net35"/>
+        <file src="AjaxMinTask2008\bin\$Configuration$\AjaxMinTask.dll" target="tools/net35"/>
+        <file src="AjaxMinTask2008\bin\$Configuration$\AjaxMin.dll" target="tools/net35"/>
+
+        <file src="**\*.cs" target="src"/>
+    </files>
+</package>

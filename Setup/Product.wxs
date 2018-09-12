@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- update BOTH of these two values for every release -->
+<?define VersionNumber = "5.15"?>
+<?define ProductId = "{20DEE057-78CA-4102-B99D-DCA8F875E9F7}"?>
+
+<?define Manufacturer = "Microsoft Corporation"?>
+<?define ManufacturerFolder = "Microsoft"?>
+<?define ProductName = "Microsoft Ajax Minifier"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="$(var.ProductId)" Name="$(var.ProductName)" Language="1033" Version="$(var.VersionNumber)" Manufacturer="$(var.Manufacturer)" UpgradeCode="{A82F55C0-675A-4E8D-A988-0C5346CC5509}">
+        <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+        <Icon Id="ApplicationIcon" SourceFile="$(var.SolutionDir)App.ico"/>
+        <Property Id="ARPPRODUCTICON" Value="ApplicationIcon" />
+
+        <!--<WixVariable Id="WixUIBannerBmp" Value="Bitmaps\Banner.bmp" />-->
+        <!--<WixVariable Id="WixUIDialogBmp" Value="Bitmaps\Dialog.bmp" />-->
+
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes" />
+
+        <Feature Id="ProductFeature" Title="Application Binaries" Description="Application binaries under the program files application folder." Display="expand" Level="1">
+            <ComponentGroupRef Id="ProductComponents" />
+            <ComponentGroupRef Id="Product20Components" />
+            <ComponentGroupRef Id="Product35Components" />
+        </Feature>
+        <Feature Id="ProductBuildFeature" Title="MSBuild Components" Description="MSBuild components under the MSBuild directory tree." Display="expand" Level="1">
+            <ComponentGroupRef Id="ProductBuildComponents" />
+            <ComponentGroupRef Id="ProductBuild35Components" />
+        </Feature>
+        <Feature Id="ProductStartMenu" Title="Start Menu Icons" Description="Start menu items to launch a command prompt and to navigate to the product documenation." Display="expand" Level="1">
+            <ComponentGroupRef Id="StartMenu" />
+        </Feature>
+
+        <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+        <UIRef Id="WixUI_AjaxMin" />
+    </Product>
+
+    <Fragment>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="MicrosoftAppFolder" Name="$(var.ManufacturerFolder)">
+                    <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)">
+                        <Directory Id="Install20Folder" Name="net20"/>
+                        <Directory Id="Install35Folder" Name="net35"/>
+                    </Directory>
+                </Directory>
+                <Directory Id="MSBuildFolder" Name="MSBuild">
+                    <Directory Id="MicrosoftBuildFolder" Name="$(var.ManufacturerFolder)">
+                        <Directory Id="AjaxMinBuildFolder" Name="MicrosoftAjax">
+                            <Directory Id="AjaxMinBuild35Folder" Name="net35"/>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ApplicationProgramsFolder" Name="$(var.ProductName)"/>
+            </Directory>
+        </Directory>
+    </Fragment>
+
+    <Fragment>
+        <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+            <Component Id="C_Application.exe" Guid="{5736EAA5-0087-C8B8-1798-76AA6800F416}">
+                <File Id="Application.exe" Name="$(var.AjaxMin.TargetFileName)" Source="$(var.AjaxMin.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_ApplicationStub.exe" Guid="{8AB8F1A8-5709-3631-921A-5EA812E44D98}">
+                <File Id="ApplicationStub.exe" Name="$(var.AjaxMinStub.TargetFileName)" Source="$(var.AjaxMinStub.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_Application.dll" Guid="{96C4046A-8D5B-AF62-4348-5484407BC675}">
+                <File Id="Application.dll" Name="$(var.AjaxMinDll.TargetFileName)" Source="$(var.AjaxMinDll.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_ApplicationTask.dll" Guid="{2F722336-48D6-4720-7757-8C6AF175021F}">
+                <File Id="ApplicationTask.dll" Name="$(var.AjaxMinTask.TargetFileName)" Source="$(var.AjaxMinTask.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_CmdPrompt.bat" Guid="{366C39CF-5C88-B2A5-AE37-DF3821A59005}">
+                <File Id="CmdPrompt.bat" Name="AjaxMinCommandPrompt.bat" Source="$(var.SolutionDir)AjaxMinCommandPrompt.bat" KeyPath="yes"></File>
+            </Component>
+            <Component Id="C_CmdPromptVars.bat" Guid="{646F4333-474C-6CF6-0117-66F5106DBFBF}">
+                <File Id="CmdPromptVars.bat" Name="AjaxMinCommandPromptVars.bat" Source="$(var.SolutionDir)AjaxMinCommandPromptVars.bat" KeyPath="yes"></File>
+            </Component>
+        </ComponentGroup>
+        <ComponentGroup Id="Product35Components" Directory="Install35Folder">
+            <Component Id="C_Application35.dll" Guid="{8078A0F9-1A4B-4FCC-A856-075CB104FFF1}">
+                <File Id="Application35.dll" Name="$(var.AjaxMinDll2008.TargetFileName)" Source="$(var.AjaxMinDll2008.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_ApplicationTask35.dll" Guid="{13822898-1BBB-45B0-92C1-2663D87711F0}">
+                <File Id="ApplicationTask35.dll" Name="$(var.AjaxMinTask2008.TargetFileName)" Source="$(var.AjaxMinTask2008.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+        </ComponentGroup>
+        <ComponentGroup Id="Product20Components" Directory="Install20Folder">
+            <Component Id="C_Application20.exe" Guid="{2380DD55-4420-4C9D-8D98-C1A8A23F0921}">
+                <File Id="Application20.exe" Name="$(var.AjaxMin2005.TargetFileName)" Source="$(var.AjaxMin2005.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="C_Application20.dll" Guid="{E93A891B-39EB-4D24-97F5-10A1FF6BF400}">
+                <File Id="Application20.dll" Name="$(var.AjaxMinDll2005.TargetFileName)" Source="$(var.AjaxMinDll2005.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+        </ComponentGroup>
+        <ComponentGroup Id="ProductBuildComponents" Directory="AjaxMinBuildFolder">
+            <Component Id="B_Application.dll" Guid="{9CCB6F22-6BC6-472E-9C03-C896DCE8C8C8}">
+                <File Id="BF_Application.dll" Name="$(var.AjaxMinDll.TargetFileName)" Source="$(var.AjaxMinDll.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="B_ApplicationTask.dll" Guid="{2F626A4C-0382-47B7-9487-6EA9C6BDD80C}">
+                <File Id="BF_ApplicationTask.dll" Name="$(var.AjaxMinTask.TargetFileName)" Source="$(var.AjaxMinTask.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="B_TaskTasks" Guid="{6419F315-631C-FCFB-6720-1ADDBF42CC54}">
+                <File Id="BF_TaskTasks" Name="AjaxMin.tasks" Source="$(var.AjaxMinTask.ProjectDir)AjaxMin.tasks" KeyPath="yes"></File>
+            </Component>
+            <Component Id="B_TaskTargets1" Guid="{FFFBA83E-21A3-463E-B3C6-D9A67921BA95}">
+                <File Id="BF_TaskTargets1" Name="AjaxMin.targets" Source="$(var.AjaxMinTask.ProjectDir)AjaxMin.targets" KeyPath="yes"></File>
+            </Component>
+            <Component Id="B_TaskTargets" Guid="{96DADAB5-5AC2-7A53-425E-601B800C1DE1}">
+                <File Id="BF_TaskTargets" Name="AjaxMinTask.targets" Source="$(var.AjaxMinTask.ProjectDir)AjaxMinTask.targets" KeyPath="yes"></File>
+            </Component>
+        </ComponentGroup>
+        <ComponentGroup Id="ProductBuild35Components" Directory="AjaxMinBuild35Folder">
+            <Component Id="B35_Application.dll" Guid="{C1FC0868-15F3-427C-A79E-680D945CBEA3}">
+                <File Id="BF35_Application.dll" Name="$(var.AjaxMinDll2008.TargetFileName)" Source="$(var.AjaxMinDll2008.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="B35_ApplicationTask.dll" Guid="{981BF84F-A860-419A-8548-DFDB1FB60787}">
+                <File Id="BF35_ApplicationTask.dll" Name="$(var.AjaxMinTask2008.TargetFileName)" Source="$(var.AjaxMinTask2008.TargetPath)" KeyPath="yes" Checksum="yes"></File>
+            </Component>
+            <Component Id="B35_TaskTasks" Guid="{BF2203A7-2987-4E2A-B666-912DB47B4F92}">
+                <File Id="BF35_TaskTasks" Name="AjaxMin.tasks" Source="$(var.AjaxMinTask.ProjectDir)AjaxMin.tasks" KeyPath="yes"></File>
+            </Component>
+            <Component Id="B35_TaskTargets1" Guid="{99EE3C7D-AE33-4231-99B6-91C5B1646587}">
+                <File Id="BF35_TaskTargets1" Name="AjaxMin.targets" Source="$(var.AjaxMinTask.ProjectDir)AjaxMin.targets" KeyPath="yes"></File>
+            </Component>
+            <Component Id="B35_TaskTargets" Guid="{F12E3764-BAE5-46E4-9987-1710A6D4E1D7}">
+                <File Id="BF35_TaskTargets" Name="AjaxMinTask.targets" Source="$(var.AjaxMinTask.ProjectDir)AjaxMinTask.targets" KeyPath="yes"></File>
+            </Component>
+        </ComponentGroup>
+        <ComponentGroup Id="StartMenu" Directory="ApplicationProgramsFolder">
+            <Component Id="C_ApplicationShortcut" Guid="{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}">
+                <Shortcut Id="ApplicationStartMenuShortcut"
+                          Name="$(var.ProductName) Command Prompt"
+                          Target="[INSTALLFOLDER]AjaxMinCommandPrompt.bat"
+                          Arguments="/k"
+                          Show="normal"
+                          WorkingDirectory="INSTALLFOLDER"/>
+                <util:InternetShortcut Id="OnlineDocumentationShortcut"
+                                       Name="Online Documentation"
+                                       Target="http://ajaxmin.codeplex.com/documentation/"/>
+                <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+                <RegistryValue Root="HKCU" Key="Software\[ManufacturerFolder]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+
+    <Fragment>
+        <UI Id="WixUI_AjaxMin">
+            <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+            <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+            <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+            <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+            <Property Id="WixUI_Mode" Value="InstallDir" />
+
+            <DialogRef Id="BrowseDlg" />
+            <DialogRef Id="DiskCostDlg" />
+            <DialogRef Id="ErrorDlg" />
+            <DialogRef Id="FatalError" />
+            <DialogRef Id="FilesInUse" />
+            <DialogRef Id="MsiRMFilesInUse" />
+            <DialogRef Id="PrepareDlg" />
+            <DialogRef Id="ProgressDlg" />
+            <DialogRef Id="ResumeDlg" />
+            <DialogRef Id="UserExit" />
+
+            <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath" Order="3">1</Publish>
+            <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"><![CDATA[WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+
+            <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">NOT Installed</Publish>
+            <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
+
+            <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="DoAction" Value="WixUIValidatePath" Order="2">NOT WIXUI_DONTVALIDATEPATH</Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="SpawnDialog" Value="InvalidDirDlg" Order="3"><![CDATA[NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+            <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="4">WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID="1"</Publish>
+            <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1">1</Publish>
+            <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2">1</Publish>
+
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="InstallDirDlg" Order="1">NOT Installed</Publish>
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed AND NOT PATCH</Publish>
+            <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
+
+            <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+            <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+            <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+            <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+            <Property Id="ARPNOMODIFY" Value="1" />
+        </UI>
+
+        <UIRef Id="WixUI_Common" />
+    </Fragment>
+</Wix>

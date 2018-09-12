@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="CleanNugetFiles" AfterTargets="Clean" Condition="'$(Configuration)'=='Release'">
+        <Message Text="Delete old nuget packages" Importance="normal"/>
+        <CreateItem Include="$(TargetDir)*.nupkg">
+            <Output TaskParameter="Include" ItemName="OldNugetPackages"/>
+        </CreateItem>
+        <Message Text="Delete old nuget specs" Importance="normal"/>
+        <CreateItem Include="$(TargetDir)*.nuspec">
+            <Output TaskParameter="Include" ItemName="OldNugetSpecs"/>
+        </CreateItem>
+        <Delete Files="@(OldNugetPackages);@(OldNugetSpecs)" />
+    </Target>
+    <Target Name="CleanDropShare" AfterTargets="Clean" Condition="'$(Configuration)'=='Release'">
+        <Message Text="Delete old drop share" Importance="normal"/>
+        <CreateItem Include="$(TargetDir)Drop/**/*">
+            <Output TaskParameter="Include" ItemName="DropFiles"/>
+        </CreateItem>
+
+        <Delete Files="@(DropFiles)" />
+        <RemoveDir Directories="$(TargetDir)Drop" Condition="Exists('$(TargetDir)Drop')" ContinueOnError="true"/>
+    </Target>
+
+    <Target Name="BuildNugetPackage" AfterTargets="Build" Condition="'$(Configuration)'=='Release'">
+        <Message Text="Creating Nuget spec" Importance="high" />
+        <CreateItem Include="@(None)" Condition="'%(Extension)'=='.nuspec'">
+            <Output TaskParameter="Include" ItemName="NugetSpecFiles"/>
+        </CreateItem>
+        <!-- run the application this project builds; it will generate the appropriate nuget spec with the right version number in it -->
+        <Exec Command="$(TargetPath) $(TargetDir) @(NugetSpecFiles, ' ')" 
+              LogStandardErrorAsError="true" />
+        
+        <Message Text="Creating Nuget packags" Importance="high" />
+        <MakeDir Directories="$(TargetDir)Drop" Condition="!Exists('$(TargetDir)Drop')" />
+        <MakeDir Directories="$(TargetDir)Drop\packages" Condition="!Exists('$(TargetDir)Drop\packages')" />
+        <Exec Command="&quot;$(SolutionDir)nuget.exe&quot; pack &quot;$(TargetDir)AjaxMin.nuspec&quot; -prop Configuration=$(Configuration) -BasePath $(SolutionDir) -out &quot;$(TargetDir)\Drop\packages&quot; -sym -verbosity detailed" 
+              LogStandardErrorAsError="true" />
+    </Target>
+    <Target Name="DontBuildNugetPackage" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
+        <Message Text="Nuget package not created for debug builds." Importance="high" />
+    </Target>
+
+    <Target Name="BuildDropShare" AfterTargets="BuildNugetPackage" Condition="'$(Configuration)'=='Release'">
+        <Message Text="Creating drop share..." Importance="high" />
+
+        <MakeDir Directories="$(TargetDir)Drop" Condition="!Exists('$(TargetDir)Drop')" />
+        <MakeDir Directories="$(TargetDir)Drop\net20" Condition="!Exists('$(TargetDir)Drop\net20')" />
+        <MakeDir Directories="$(TargetDir)Drop\net35" Condition="!Exists('$(TargetDir)Drop\net35')" />
+        <MakeDir Directories="$(TargetDir)Drop\net40" Condition="!Exists('$(TargetDir)Drop\net40')" />
+        
+        <!-- installer installs v4.0 of the executables under %PROGRAMFILES%\Microsoft\Microsoft Ajax Minifier, 
+             and v4.0 and v3.5 of the build tools under %PROGRAMFILES%\MSBuild\MicrosoftAjax -->
+        <Copy SourceFiles="$(SolutionDir)Setup\bin\$(Configuration)\AjaxMinSetup.msi" DestinationFolder="$(TargetDir)Drop\" />
+   
+        <Copy SourceFiles="$(SolutionDir)AjaxMin\bin\$(Configuration)\AjaxMinifier.exe" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMin\bin\$(Configuration)\AjaxMinifier.pdb" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll\bin\$(Configuration)\AjaxMin.dll" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll\bin\$(Configuration)\AjaxMin.pdb" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\bin\$(Configuration)\AjaxMinTask.dll" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\bin\$(Configuration)\AjaxMinTask.pdb" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinStub\bin\$(Configuration)\AjaxMin.exe" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)JavaScriptOnlyDll\bin\$(Configuration)\AjaxMinJavaScriptLibrary.dll" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)JavaScriptOnlyDll\bin\$(Configuration)\AjaxMinJavaScriptLibrary.pdb" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMin.tasks" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMin.targets" DestinationFolder="$(TargetDir)Drop\net40" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMinTask.targets" DestinationFolder="$(TargetDir)Drop\net40" />
+
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll2008\bin\$(Configuration)\AjaxMin.dll" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll2008\bin\$(Configuration)\AjaxMin.pdb" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask2008\bin\$(Configuration)\AjaxMinTask.dll" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask2008\bin\$(Configuration)\AjaxMinTask.pdb" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMin.tasks" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMin.targets" DestinationFolder="$(TargetDir)Drop\net35" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinTask\AjaxMinTask.targets" DestinationFolder="$(TargetDir)Drop\net35" />
+
+        <Copy SourceFiles="$(SolutionDir)AjaxMin2005\bin\$(Configuration)\AjaxMinifier.exe" DestinationFolder="$(TargetDir)Drop\net20" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMin2005\bin\$(Configuration)\AjaxMinifier.pdb" DestinationFolder="$(TargetDir)Drop\net20" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll2005\bin\$(Configuration)\AjaxMin.dll" DestinationFolder="$(TargetDir)Drop\net20" />
+        <Copy SourceFiles="$(SolutionDir)AjaxMinDll2005\bin\$(Configuration)\AjaxMin.pdb" DestinationFolder="$(TargetDir)Drop\net20" />
+
+        <MakeDir Directories="$(TargetDir)Drop\packages" Condition="!Exists('$(TargetDir)Drop\packages')" />
+        <!-- get the list of all references that are marked as "copy local" -->
+        <CreateItem Include="$(SolutionDir)Deployment\bin\Release\*.nupkg">
+            <Output TaskParameter="Include" ItemName="NugetPackages"/>
+        </CreateItem>
+        <Copy SourceFiles="@(NugetPackages)" DestinationFolder="$(TargetDir)Drop\packages" />
+    </Target>
+    <Target Name="DontBuildDropShare" AfterTargets="Build" Condition="'$(Configuration)'=='Debug'">
+        <Message Text="Drop share not created for debug builds." Importance="high" />
+    </Target>
+</Project>

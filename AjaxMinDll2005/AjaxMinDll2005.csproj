@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AAAA10AC-122E-4B87-B458-3EC03A06E331}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Ajax.Utilities</RootNamespace>
+    <AssemblyName>AjaxMin</AssemblyName>
+    <AssemblyOriginatorKeyFile>..\AjaxMin.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NET_20</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\AjaxMinDll\Migrated rules for AjaxMinDll.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET_20</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AjaxMinDll\CommonData.cs">
+      <Link>CommonData.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\CommonSettings.cs">
+      <Link>CommonSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\CommonStrings.Designer.cs">
+      <Link>CommonStrings.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Configuration.cs">
+      <Link>Configuration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\ContextError.cs">
+      <Link>ContextError.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\CssEncoderFallback.cs">
+      <Link>CssEncoderFallback.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssColorName.cs">
+      <Link>Css\CssColorName.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssErrorCode.cs">
+      <Link>Css\CssErrorCode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssParser.cs">
+      <Link>Css\CssParser.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssScanner.cs">
+      <Link>Css\CssScanner.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssSettings.cs">
+      <Link>Css\CssSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssStrings.Designer.cs">
+      <Link>Css\CssStrings.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CssStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Css\CssToken.cs">
+      <Link>Css\CssToken.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Helpers.cs">
+      <Link>Helpers.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\activationobject.cs">
+      <Link>JavaScript\activationobject.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\AnalyzeNodeVisitor.cs">
+      <Link>JavaScript\AnalyzeNodeVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\arrayliteral.cs">
+      <Link>JavaScript\arrayliteral.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\aspnetblocknode.cs">
+      <Link>JavaScript\aspnetblocknode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ast.cs">
+      <Link>JavaScript\ast.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\astlist.cs">
+      <Link>JavaScript\astlist.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\binaryop.cs">
+      <Link>JavaScript\binaryop.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\BindingIdentifier.cs">
+      <Link>JavaScript\BindingIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\BindingsVisitor.cs">
+      <Link>JavaScript\BindingsVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\BindingTransform.cs">
+      <Link>JavaScript\BindingTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\block.cs">
+      <Link>JavaScript\block.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\blockscope.cs">
+      <Link>JavaScript\blockscope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\break.cs">
+      <Link>JavaScript\break.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\call.cs">
+      <Link>JavaScript\call.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\catchscope.cs">
+      <Link>JavaScript\catchscope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\cccomment.cs">
+      <Link>JavaScript\cccomment.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccelif.cs">
+      <Link>JavaScript\ccelif.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccelse.cs">
+      <Link>JavaScript\ccelse.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccend.cs">
+      <Link>JavaScript\ccend.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccif.cs">
+      <Link>JavaScript\ccif.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccon.cs">
+      <Link>JavaScript\ccon.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccset.cs">
+      <Link>JavaScript\ccset.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ccstatement.cs">
+      <Link>JavaScript\ccstatement.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ClassNode.cs">
+      <Link>JavaScript\ClassNode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\codesettings.cs">
+      <Link>JavaScript\codesettings.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\CommaOperator.cs">
+      <Link>JavaScript\CommaOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ComprehensionClause.cs">
+      <Link>JavaScript\ComprehensionClause.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ComprehensionForClause.cs">
+      <Link>JavaScript\ComprehensionForClause.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ComprehensionIfClause.cs">
+      <Link>JavaScript\ComprehensionIfClause.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ComprehensionNode.cs">
+      <Link>JavaScript\ComprehensionNode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\conditional.cs">
+      <Link>JavaScript\conditional.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\const.cs">
+      <Link>JavaScript\const.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\constantwrapper.cs">
+      <Link>JavaScript\constantwrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\constantwrapperpp.cs">
+      <Link>JavaScript\constantwrapperpp.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\context.cs">
+      <Link>JavaScript\context.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\continue.cs">
+      <Link>JavaScript\continue.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\crunchenumerator.cs">
+      <Link>JavaScript\crunchenumerator.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\CustomNode.cs">
+      <Link>JavaScript\CustomNode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\debugger.cs">
+      <Link>JavaScript\debugger.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\declaration.cs">
+      <Link>JavaScript\declaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\DetachReferences.cs">
+      <Link>JavaScript\DetachReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\directiveprologue.cs">
+      <Link>JavaScript\directiveprologue.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\documentcontext.cs">
+      <Link>JavaScript\documentcontext.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\dowhile.cs">
+      <Link>JavaScript\dowhile.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\emptystatement.cs">
+      <Link>JavaScript\emptystatement.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\EvaluateLiteralVisitor.cs">
+      <Link>JavaScript\EvaluateLiteralVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ExportNode.cs">
+      <Link>JavaScript\ExportNode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\expr.cs">
+      <Link>JavaScript\expr.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\FinalPassVisitor.cs">
+      <Link>JavaScript\FinalPassVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\for.cs">
+      <Link>JavaScript\for.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\forin.cs">
+      <Link>JavaScript\forin.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\functionobject.cs">
+      <Link>JavaScript\functionobject.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\functionscope.cs">
+      <Link>JavaScript\functionscope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\gettersetter.cs">
+      <Link>JavaScript\gettersetter.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\globalscope.cs">
+      <Link>JavaScript\globalscope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\grouping.cs">
+      <Link>JavaScript\grouping.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\if.cs">
+      <Link>JavaScript\if.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\IModuleReference.cs">
+      <Link>JavaScript\IModuleReference.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\importantcomment.cs">
+      <Link>JavaScript\importantcomment.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ImportExportSpecifier.cs">
+      <Link>JavaScript\ImportExportSpecifier.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ImportExportStatement.cs">
+      <Link>JavaScript\ImportExportStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ImportNode.cs">
+      <Link>JavaScript\ImportNode.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\INameDeclaration.cs">
+      <Link>JavaScript\INameDeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\INameReference.cs">
+      <Link>JavaScript\INameReference.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\Initializer.cs">
+      <Link>JavaScript\Initializer.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\IRenameable.cs">
+      <Link>JavaScript\IRenameable.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ISourceMap.cs">
+      <Link>JavaScript\ISourceMap.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\IterationStatement.cs">
+      <Link>JavaScript\IterationStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\IVisitor.cs">
+      <Link>JavaScript\IVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\JScript.Designer.cs">
+      <Link>JavaScript\JScript.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JScript.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jserror.cs">
+      <Link>JavaScript\jserror.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jskeyword.cs">
+      <Link>JavaScript\jskeyword.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\JSON.cs">
+      <Link>JavaScript\JSON.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\JSONOutputVisitor.cs">
+      <Link>JavaScript\JSONOutputVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jsparser.cs">
+      <Link>JavaScript\jsparser.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jsscanner.cs">
+      <Link>JavaScript\jsscanner.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jstoken.cs">
+      <Link>JavaScript\jstoken.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\jsvariablefield.cs">
+      <Link>JavaScript\jsvariablefield.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\labeledstatement.cs">
+      <Link>JavaScript\labeledstatement.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\LexicalDeclaration.cs">
+      <Link>JavaScript\LexicalDeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\LogicalNotVisitor.cs">
+      <Link>JavaScript\LogicalNotVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\lookup.cs">
+      <Link>JavaScript\lookup.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\MatchPropertiesVisitor.cs">
+      <Link>JavaScript\MatchPropertiesVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\member.cs">
+      <Link>JavaScript\member.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\missing.cs">
+      <Link>JavaScript\missing.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ModuleDeclaration.cs">
+      <Link>JavaScript\ModuleDeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ModuleScope.cs">
+      <Link>JavaScript\ModuleScope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\NewParensVisitor.cs">
+      <Link>JavaScript\NewParensVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\objectliteral.cs">
+      <Link>JavaScript\objectliteral.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\objectliteralfield.cs">
+      <Link>JavaScript\objectliteralfield.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ObjectLiteralProperty.cs">
+      <Link>JavaScript\ObjectLiteralProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\opprec.cs">
+      <Link>JavaScript\opprec.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\OutputVisitor.cs">
+      <Link>JavaScript\OutputVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\parameterdeclaration.cs">
+      <Link>JavaScript\parameterdeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ReferencesVisitor.cs">
+      <Link>JavaScript\ReferencesVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\regexpliteral.cs">
+      <Link>JavaScript\regexpliteral.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ReorderScopeVisitor.cs">
+      <Link>JavaScript\ReorderScopeVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\RequiresSeparatorVisitor.cs">
+      <Link>JavaScript\RequiresSeparatorVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ResolutionVisitor.cs">
+      <Link>JavaScript\ResolutionVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\return.cs">
+      <Link>JavaScript\return.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\ScriptSharpSourceMap.cs">
+      <Link>JavaScript\ScriptSharpSourceMap.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\SourceMapFactory.cs">
+      <Link>JavaScript\SourceMapFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\StatementStartVisitor.cs">
+      <Link>JavaScript\StatementStartVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\switch.cs">
+      <Link>JavaScript\switch.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\switchcase.cs">
+      <Link>JavaScript\switchcase.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\TemplateLiteral.cs">
+      <Link>JavaScript\TemplateLiteral.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\TemplateLiteralExpression.cs">
+      <Link>JavaScript\TemplateLiteralExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\thisliteral.cs">
+      <Link>JavaScript\thisliteral.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\throw.cs">
+      <Link>JavaScript\throw.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\TreeVisitor.cs">
+      <Link>JavaScript\TreeVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\try.cs">
+      <Link>JavaScript\try.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\unaryop.cs">
+      <Link>JavaScript\unaryop.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\V3SourceMap.cs">
+      <Link>JavaScript\V3SourceMap.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\var.cs">
+      <Link>JavaScript\var.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\variabledeclaration.cs">
+      <Link>JavaScript\variabledeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\while.cs">
+      <Link>JavaScript\while.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\with.cs">
+      <Link>JavaScript\with.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JavaScript\withscope.cs">
+      <Link>JavaScript\withscope.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\JSEncoderFallback.cs">
+      <Link>JSEncoderFallback.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\Minifier.cs">
+      <Link>Minifier.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\ResourceStrings.cs">
+      <Link>ResourceStrings.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\StringBuilderPool.cs">
+      <Link>StringBuilderPool.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMinDll\SwitchParser.cs">
+      <Link>SwitchParser.cs</Link>
+    </Compile>
+    <Compile Include="..\AjaxMin\Properties\ProductAssemblyInfo.cs">
+      <Link>Properties\ProductAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="LinqStub.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\AjaxMinDll\CommonStrings.resx">
+      <Link>CommonStrings.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\AjaxMinDll\Css\CssStrings.resx">
+      <Link>Css\CssStrings.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CssStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Ajax.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\AjaxMinDll\JavaScript\JScript.resx">
+      <Link>JavaScript\JScript.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>JScript.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Ajax.Utilities</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

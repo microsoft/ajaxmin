@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94F93D25-8EBC-4F32-B1F1-D63914DF6DCC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CssUnitTest</RootNamespace>
+    <AssemblyName>CssUnitTest</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtRules.cs" />
+    <Compile Include="Common\TestHelper.cs" />
+    <Compile Include="Declarations.cs" />
+    <Compile Include="EmbeddedAspNetBlock.cs" />
+    <Compile Include="Encoding.cs" />
+    <Compile Include="Errors.cs" />
+    <Compile Include="Hacks.cs" />
+    <Compile Include="TestData\CSS\Input\Replacements\ValueReplacement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValueReplacement.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommentHacks.cs" />
+    <Compile Include="Collapse.cs" />
+    <Compile Include="Replacements.cs" />
+    <Compile Include="Selectors.cs" />
+    <Compile Include="Syntax.cs" />
+    <Compile Include="Switches.cs" />
+    <Content Include="TestData\CSS\Expected\Replacements\ColorNames_noswap.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\Ie8Eot.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Any.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\CSS3_all.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\CSS3_pretty.css" />
+    <Content Include="TestData\CSS\Expected\Values\progid.css" />
+    <Content Include="TestData\CSS\Input\Replacements\Ie8Eot.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Any.css" />
+    <Content Include="TestData\CSS\Input\Switches\EchoInput.css" />
+    <Compile Include="Values.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\CSS\Expected\AtRules\Charset.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\FontFace.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Import.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportColor_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportComment.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportComment_c.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportComment_x.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportLevel0Bar2_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportLevel1Bar_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportLevel1Baz_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportLevel2Foo_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\ImportLevel3Foo2_i.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\KeyFrames.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\KeyFrames_p.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\KeyFrames_same.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Keyframes_source.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Media.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Namespace.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Other.css" />
+    <Content Include="TestData\CSS\Expected\AtRules\Page.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\Numbers_n.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\Numbers.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\RGB_f.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\RGB_h.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\RGB.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\rrggbb.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\StringBreaks.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\TermSemis_t.css" />
+    <Content Include="TestData\CSS\Expected\Collapse\TermSemis.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\EmbeddedImportantComment.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\EmbeddedImportantComment_pretty.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\EmptyComments_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\EmptyComments.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromIE5_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromIE5.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromIE6_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromIE6.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromMacIE_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromMacIE.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromNS4_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\HideFromNS4.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\ImportantComment.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\ImportantCommentHacks.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\ImportantComment_All.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\ImportantComment_Kill.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\ImportantComment_None.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\OnlyNS4_nc.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\OnlyNS4.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\SharepointThemes.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\SharepointThemes_None.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\SingleLine.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\TwoImportantComments.css" />
+    <Content Include="TestData\CSS\Expected\CommentHacks\TwoImportantComments_pretty.css" />
+    <Content Include="TestData\CSS\Expected\Declarations\NoTrailingSemicolon.css" />
+    <Content Include="TestData\CSS\Expected\Declarations\NoTrailingSemicolon_term.css" />
+    <Content Include="TestData\CSS\Expected\Declarations\TrailingSemicolon.css" />
+    <Content Include="TestData\CSS\Expected\Declarations\TrailingSemicolon_term.css" />
+    <Content Include="TestData\CSS\Expected\EmbeddedAspNetBlock\StringWithBlock.css" />
+    <Content Include="TestData\CSS\Expected\EmbeddedAspNetBlock\TopLevel.css" />
+    <Content Include="TestData\CSS\Expected\Encoding\empty.css" />
+    <Content Include="TestData\CSS\Expected\Encoding\escaped.css" />
+    <Content Include="TestData\CSS\Expected\Encoding\escaped_utf8.css" />
+    <Content Include="TestData\CSS\Expected\Errors\BadRGB.css" />
+    <Content Include="TestData\CSS\Expected\Errors\Exponent.css" />
+    <Content Include="TestData\CSS\Expected\Errors\InvalidClassName.css" />
+    <Content Include="TestData\CSS\Expected\Errors\UnterminatedString.css" />
+    <Content Include="TestData\CSS\Expected\Hacks\IEhacks.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\ColorNames_strict.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\ColorNames_hex.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\ColorNames_major.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\CssReplacementTokens.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\MajorColors.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\MajorColors_strict.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\StringReplacement.css" />
+    <Content Include="TestData\CSS\Expected\Replacements\ValueReplacement.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Attribute.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Combinator.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\CSS3.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Escapes.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Grouping.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\MatchCasing.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Namespace.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\NoSpaceUniversal.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Not.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\PseudoClass_utf8.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\PseudoElement.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\PseudoClass.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Simple.css" />
+    <Content Include="TestData\CSS\Expected\Selectors\Universal.css" />
+    <Content Include="TestData\CSS\Expected\Switches\EchoInput.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\AlphaHash.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\CDO.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Escapes.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Expr.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Expression.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\FontNames.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Function_f.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Function.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Important.css" />
+    <Content Include="TestData\CSS\Expected\Errors\ParsingErrors.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\PointZeroEms.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Strings.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\Term.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\UnicodeRange.css" />
+    <Content Include="TestData\CSS\Expected\Syntax\uri.css" />
+    <Content Include="TestData\CSS\Expected\Values\Attr.css" />
+    <Content Include="TestData\CSS\Expected\Values\Calc.css" />
+    <Content Include="TestData\CSS\Expected\Values\Cycle.css" />
+    <Content Include="TestData\CSS\Expected\Values\Grids.css" />
+    <Content Include="TestData\CSS\Expected\Values\Toggle.css" />
+    <Content Include="TestData\CSS\Expected\Values\Zeros.css" />
+    <Content Include="TestData\CSS\Expected\Values\Units.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Charset.css" />
+    <Content Include="TestData\CSS\Input\AtRules\FontFace.css" />
+    <Content Include="TestData\CSS\Input\AtRules\green.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Import.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportColor.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportComment.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportLevel0Bar2.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportLevel1Bar.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportLevel1Baz.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportLevel2Foo.css" />
+    <Content Include="TestData\CSS\Input\AtRules\ImportLevel3Foo2.css" />
+    <Content Include="TestData\CSS\Input\AtRules\KeyFrames.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Media.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Namespace.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Other.css" />
+    <Content Include="TestData\CSS\Input\AtRules\Page.css" />
+    <Content Include="TestData\CSS\Input\AtRules\red.css" />
+    <Content Include="TestData\CSS\Input\Collapse\Numbers.css" />
+    <Content Include="TestData\CSS\Input\Collapse\RGB.css" />
+    <Content Include="TestData\CSS\Input\Collapse\rrggbb.css" />
+    <Content Include="TestData\CSS\Input\Collapse\StringBreaks.css" />
+    <Content Include="TestData\CSS\Input\Collapse\TermSemis.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\EmbeddedImportantComment.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\EmptyComments.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\HideFromIE5.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\HideFromIE6.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\HideFromMacIE.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\HideFromNS4.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\ImportantComment.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\ImportantCommentHacks.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\OnlyNS4.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\SharepointThemes.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\SingleLine.css" />
+    <Content Include="TestData\CSS\Input\CommentHacks\TwoImportantComments.css" />
+    <Content Include="TestData\CSS\Input\Declarations\NoTrailingSemicolon.css" />
+    <Content Include="TestData\CSS\Input\Declarations\TrailingSemicolon.css" />
+    <Content Include="TestData\CSS\Input\EmbeddedAspNetBlock\StringWithBlock.css" />
+    <Content Include="TestData\CSS\Input\EmbeddedAspNetBlock\TopLevel.css" />
+    <Content Include="TestData\CSS\Input\Encoding\empty.css" />
+    <Content Include="TestData\CSS\Input\Encoding\escaped.css" />
+    <Content Include="TestData\CSS\Input\Errors\BadRGB.css" />
+    <Content Include="TestData\CSS\Input\Errors\Exponent.css" />
+    <Content Include="TestData\CSS\Input\Errors\InvalidClassName.css" />
+    <Content Include="TestData\CSS\Input\Errors\UnterminatedString.css" />
+    <Content Include="TestData\CSS\Input\Hacks\IEhacks.css" />
+    <Content Include="TestData\CSS\Input\Replacements\ColorNames.css" />
+    <Content Include="TestData\CSS\Input\Replacements\CssReplacementTokens.css" />
+    <Content Include="TestData\CSS\Input\Replacements\MajorColors.css" />
+    <Content Include="TestData\CSS\Input\Replacements\StringReplacement.css" />
+    <Content Include="TestData\CSS\Input\Replacements\ValueReplacement.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Attribute.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Combinator.css" />
+    <Content Include="TestData\CSS\Input\Selectors\CSS3.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Escapes.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Grouping.css" />
+    <Content Include="TestData\CSS\Input\Selectors\MatchCasing.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Namespace.css" />
+    <Content Include="TestData\CSS\Input\Selectors\NoSpaceUniversal.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Not.css" />
+    <Content Include="TestData\CSS\Input\Selectors\PseudoElement.css" />
+    <Content Include="TestData\CSS\Input\Selectors\PseudoClass.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Simple.css" />
+    <Content Include="TestData\CSS\Input\Selectors\Universal.css" />
+    <Content Include="TestData\CSS\Input\Syntax\CDO.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Escapes.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Expr.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Expression.css" />
+    <Content Include="TestData\CSS\Input\Syntax\FontNames.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Function.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Important.css" />
+    <Content Include="TestData\CSS\Input\Errors\ParsingErrors.css" />
+    <Content Include="TestData\CSS\Input\Syntax\PointZeroEms.css" />
+    <Content Include="TestData\CSS\Input\Values\progid.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Strings.css" />
+    <Content Include="TestData\CSS\Input\Syntax\AlphaHash.css" />
+    <Content Include="TestData\CSS\Input\Syntax\Term.css" />
+    <Content Include="TestData\CSS\Input\Syntax\UnicodeRange.css" />
+    <Content Include="TestData\CSS\Input\Syntax\uri.css" />
+    <Content Include="TestData\CSS\Input\Values\Attr.css" />
+    <Content Include="TestData\CSS\Input\Values\Calc.css" />
+    <Content Include="TestData\CSS\Input\Values\Cycle.css" />
+    <Content Include="TestData\CSS\Input\Values\Grids.css" />
+    <Content Include="TestData\CSS\Input\Values\Toggle.css" />
+    <Content Include="TestData\CSS\Input\Values\Units.css" />
+    <Content Include="TestData\CSS\Input\Values\Zeros.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\CSS\Input\Replacements\ValueReplacement.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValueReplacement.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AjaxMin\AjaxMin.csproj">
+      <Project>{5A0F7031-4728-4E10-BD0C-E07EDDBF5963}</Project>
+      <Name>AjaxMin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+</Project>
