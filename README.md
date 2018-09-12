@@ -12,7 +12,6 @@ JavaScript and CSS files minified with Ajax Minifier should work as-is; you shou
 If you have any new feature requests, please feel free to bring them up on the "Issues" page. We cannot guarantee feature requests will make it into the code.
 
  ## Offical NuGet Package
- ---
 
 There is an official **NuGet** package for the DLL version of Microsoft Ajax Minifier, if you prefer to manage your C# projects in that manner:
 
@@ -23,7 +22,6 @@ AjaxMin was created by Ron Logan.
 
 
 ## Contributing
----
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
