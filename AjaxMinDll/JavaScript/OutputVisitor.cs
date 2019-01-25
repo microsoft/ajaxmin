@@ -3795,10 +3795,12 @@ namespace Microsoft.Ajax.Utilities
                     // we need to wrap the parens for all function object other than arrow functions,
                     // and for arrow functions where there are zero or more than one parameter.
                     // if it IS an arrow function with a single parameter, we still want to wrap the
-                    // parameter in parens if it's a rest argument.
+                    // parameter in parens if it's a rest argument or an array/object destructuring parameter.
                     var wrapInParens = node.FunctionType != FunctionType.ArrowFunction 
                         || node.ParameterDeclarations.Count != 1
-                        || (node.ParameterDeclarations[0] as ParameterDeclaration).IfNotNull(d => d.HasRest, true);
+                        || (node.ParameterDeclarations[0] as ParameterDeclaration).IfNotNull(
+                            d => d.HasRest || d.Binding is ArrayLiteral || d.Binding is ObjectLiteral,
+                            true);
 
                     if (wrapInParens)
                     {
