@@ -652,6 +652,7 @@ namespace Microsoft.Ajax.Utilities
                   || ParseMedia() == Parsed.True
                   || ParsePage() == Parsed.True
                   || ParseFontFace() == Parsed.True
+                  || ParseKeyFrames() == Parsed.True
                   || ParseAtKeyword() == Parsed.True
                   || ParseAspNetBlock() == Parsed.True)
                 {
@@ -1120,6 +1121,7 @@ namespace Microsoft.Ajax.Utilities
                           || ParseMedia() == Parsed.True
                           || ParsePage() == Parsed.True
                           || ParseFontFace() == Parsed.True
+                          || ParseKeyFrames() == Parsed.True
                           || ParseAtKeyword() == Parsed.True
                           || ParseAspNetBlock() == Parsed.True)
                         {
