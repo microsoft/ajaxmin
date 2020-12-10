@@ -1,3 +1,6 @@
+__⚠️ Notice:  This project is no longer maintained.__
+
+
 # Project Description 
 The **Microsoft Ajax Minifier** enables you to improve the performance of your web applications by reducing the size of your Cascading Style Sheet and JavaScript files. 
 
