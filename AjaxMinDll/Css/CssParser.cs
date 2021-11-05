@@ -2304,7 +2304,7 @@ namespace Microsoft.Ajax.Utilities
                             NextToken();
                             ParseExpression();
                         }
-                        // PvK: just copy the function.
+                        // Just copy the function.
                         while (CurrentTokenType == TokenType.Character
                             && CurrentTokenText != ")")
                         {
