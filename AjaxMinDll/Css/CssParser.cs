@@ -2304,6 +2304,14 @@ namespace Microsoft.Ajax.Utilities
                             NextToken();
                             ParseExpression();
                         }
+                        // Just copy the function.
+                        while (CurrentTokenType == TokenType.Character
+                            && CurrentTokenText != ")")
+                        {
+                            AppendCurrent();
+                            NextToken();
+                            ParseExpression();
+                        }
 
                         if (CurrentTokenType != TokenType.Character
                           || CurrentTokenText != ")")
@@ -3749,6 +3757,8 @@ namespace Microsoft.Ajax.Utilities
         /// </summary>
         private void SkipSpace()
         {
+            bool skipSpace = "{};".Contains(CurrentTokenText);
+
             // reset the skipped-space flag
             m_skippedSpace = false;
 
@@ -3762,6 +3772,9 @@ namespace Microsoft.Ajax.Utilities
             while (CurrentTokenType == TokenType.Space)
             {
                 m_skippedSpace = true;
+                if (!skipSpace) // Do not skip all spaces for modern CSS statements.
+                    AppendCurrent();
+
                 NextToken();
                 encounteredNewLine = encounteredNewLine || m_encounteredNewLine;
             }
@@ -4020,12 +4033,12 @@ namespace Microsoft.Ajax.Utilities
 
         private static bool NeedsSpaceBefore(string text)
         {
-            return text == null ? false : !("{}()[],;".Contains(text));
+            return text == null ? false : !("{}[],;".Contains(text));
         }
 
         private static bool NeedsSpaceAfter(string text)
         {
-            return text == null ? false : !("{}()[],;:".Contains(text));
+            return text == null ? false : !("{}[],;:".Contains(text));
         }
 
         #endregion
