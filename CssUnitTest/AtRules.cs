@@ -107,5 +107,11 @@ namespace CssUnitTest
     {
         TestHelper.Instance.RunTest("-pretty -braces:source");
     }
+
+        [TestMethod]
+    public void Nested()
+    {
+        TestHelper.Instance.RunTest();
+    }
   }
 }
